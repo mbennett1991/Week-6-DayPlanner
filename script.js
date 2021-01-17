@@ -11,7 +11,7 @@ var saveBtn = $(".saveBtn");
 console.log(currentHour);
 //function that links hours to descriptions and moment.js
 function timeTrack(){
-
+    //for each hour 
     //parseInt hours value? 
     var scheduleHour = parseInt(hours.value);
 
@@ -28,17 +28,20 @@ function timeTrack(){
 
 timeTrack();
 //
+// insert for each 
 function savedToWindow(){
     var retrieveTextArea = window.localStorage.getItem("textArea", textArea);
     if (retrieveTextArea == null){
         return;
     } else {
-        textArea.text = retrieveTextArea;
+        textArea.text(retrieveTextArea);
     }
 }
 
 //onclick events that save textarea to local storage 
-//for each
+//insert for each
+
+//you need to stringify and parse 
 saveBtn.on("click", function(event){
     event.preventDefault();
 
