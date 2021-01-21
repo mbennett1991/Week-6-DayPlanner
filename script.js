@@ -21,12 +21,13 @@ function timeTrack(){
 
     if (scheduleHour === currentHour){
         thisHour.addClass("present");
-    }else if (currentHour.isAfter(scheduleHour)){
+    } else if (currentHour < scheduleHour){
         thisHour.addClass("past");
-    }//else (scheduleHour == currentHour.isAfter()){
-        //set this to "style" ".future"
-      //  hours.addClass("future");
-});
+    } else (scheduleHour < currentHour){
+        thishour.addClass("future")
+    };
+);
+
 timetrack();
 };
 
@@ -35,10 +36,13 @@ timeTrack();
 //
 // insert for each 
 function savedToWindow(){
-//you need to stringify and parse 
+// link local storage to to-dos empty array    
+// save user input from textarea to todos
+// you need to stringify and parse
+// set/get local storage?
 saveBtn.on("click", function(event){
     event.preventDefault();
-
+//Save to do to local storage
     localStorage.setItem("textArea", textArea);
     savedToWindow()
 })
