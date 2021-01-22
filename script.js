@@ -1,12 +1,10 @@
 var currentDay = moment();
 var timeBlock = $(".time-block");
-var hours = $(".hour");
 var textArea = $(".description");
 var currentHour = moment().format("H");
-console.log(currentHour);
 var saveBtn = $(".saveBtn");
 
-
+//Setting up time blocks to change colors depending on time
 function pastPresentFuture() {
     timeBlock.each(function () {
         var thisHour = $(this);
@@ -23,6 +21,7 @@ function pastPresentFuture() {
     });
 };
 
+//saving items to local storage
 saveBtn.on("click", function (event) {
     event.preventDefault();
 
@@ -32,6 +31,7 @@ saveBtn.on("click", function (event) {
         localStorage.setItem(hourToDo, textToDo);
     });
 
+//Grabbing items from local storage to be stored on webpage
 function renderSchedule(){
     timeBlock.each(function(){
         var hourToDo = $(this).attr("data-hour");
@@ -45,7 +45,7 @@ function renderSchedule(){
         }
     });
 }
-
+//Calling functions when the document has loaded
 $(document).ready(function () {
     pastPresentFuture();
     renderSchedule();
