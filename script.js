@@ -1,24 +1,23 @@
 var currentDay = moment();
 var timeBlock = $(".time-block");
 var hours = $(".hour");
-var toDos = [];
 var textArea = $(".description");
 var currentHour = moment().format("H");
 console.log(currentHour);
 var saveBtn = $(".saveBtn");
 
 
-function pastPresentFuture(){
-    timeBlock.each(function(){
+function pastPresentFuture() {
+    timeBlock.each(function () {
         var thisHour = $(this);
         var thisBlockHour = parseInt(thisHour.attr("data-hour"));
         console.log(thisBlockHour);
 
-        if (thisBlockHour == currentHour){
+        if (thisBlockHour == currentHour) {
             thisHour.addClass("present");
-        }else if (thisBlockHour < currentHour){
+        } else if (thisBlockHour < currentHour) {
             thisHour.addClass("past");
-        }else if (thisBlockHour > currentHour){
+        } else if (thisBlockHour > currentHour) {
             thisHour.addClass("future")
         };
     });
@@ -26,18 +25,26 @@ function pastPresentFuture(){
 
 
 
-// function saveEvent(){
 
-// };
+saveBtn.on("click", function (event) {
+    event.preventDefault();
+
+        var hourToDo = $(this).parent().attr("data-hour");
+        var textToDo = $(this).siblings(textArea.val());
+
+        localStorage.setItem(hourToDo, textToDo);
+
+    });
 
 // function renderSchedule(){
 
 // };
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-     pastPresentFuture();
-    
-//     $("#currentDay").text(currentDay.format("dddd, DD MMMM, YYYY"));
+    pastPresentFuture();
 
- });
+
+    $("#currentDay").text(currentDay.format("dddd, DD MMMM, YYYY"))
+
+});
