@@ -30,7 +30,6 @@ saveBtn.on("click", function (event) {
         var textToDo = $(this).siblings(".description").val();
 
         localStorage.setItem(hourToDo, textToDo);
-
     });
 
 function renderSchedule(){
@@ -48,11 +47,7 @@ function renderSchedule(){
 }
 
 $(document).ready(function () {
-
     pastPresentFuture();
     renderSchedule();
-
-
     $("#currentDay").text(currentDay.format("dddd, DD MMMM, YYYY"))
-
 });
