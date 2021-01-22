@@ -23,26 +23,34 @@ function pastPresentFuture() {
     });
 };
 
-
-
-
 saveBtn.on("click", function (event) {
     event.preventDefault();
 
         var hourToDo = $(this).parent().attr("data-hour");
-        var textToDo = $(this).siblings(textArea.val());
+        var textToDo = $(this).siblings(".description").val();
 
         localStorage.setItem(hourToDo, textToDo);
 
     });
 
-// function renderSchedule(){
+function renderSchedule(){
+    timeBlock.each(function(){
+        var hourToDo = $(this).attr("data-hour");
+        var textToDos = localStorage.getItem(hourToDo);
+        console.log(textToDos)
 
-// };
+        if (textToDos !== null){
+            $(this).children(textArea).val(textToDos);
+        }else{
+            return;
+        }
+    });
+}
 
 $(document).ready(function () {
 
     pastPresentFuture();
+    renderSchedule();
 
 
     $("#currentDay").text(currentDay.format("dddd, DD MMMM, YYYY"))
