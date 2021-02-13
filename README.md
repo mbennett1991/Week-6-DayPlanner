@@ -49,4 +49,5 @@ Below is a link to my gitHub pages to see more of my work!
 ---
 <a name = "License"></a>
 ### License 
+© 2021 Michelle Bennett
 © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
